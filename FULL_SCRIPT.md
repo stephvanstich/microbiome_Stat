@@ -1,10 +1,10 @@
 
 
 
-'''
+''
 install.packages("xlsx")
 library("xlsx", lib.loc="/Library/Frameworks/R.framework/Versions/3.5/Resources/library")
-'''
+''
 
 ## Importing otu table in R studio
 
