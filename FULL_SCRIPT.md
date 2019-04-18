@@ -14,7 +14,7 @@ Otu_pups_stat_treatment<-describeBy(otu_pups,otu_pups$Treatment,mat=TRUE)
 Final_Otu_pups_stat_treatment <- Otu_pups_stat_treatment[-c(1, 2, 3,4,5,6), ] 
 write.table(Final_Otu_pups_stat_treatment,"Otu_pups_stat.txt",sep="\t")
 ```
-Here is the final [table](Final_Otu_pups_stat.txt) that you would create.
+Here is the final [table](Otu_pups_stat.txt) that you would create.
 
 ## Krukal-Wallis test
 
