@@ -1,7 +1,7 @@
 
-Welcome to General Stat for microbiome data
+# Welcome to General Stat for microbiome data
 
-## Importing otu table in R studio
+## Importing otu [table](otu_pups.txt) in R studio
 
 ```
 otu_pups <- read.delim("otu_pups.txt", header=TRUE)
@@ -13,6 +13,7 @@ otu_pups <- read.delim("otu_pups.txt", header=TRUE)
 Otu_pups_stat_treatment<-describeBy(otu_pups,otu_pups$Treatment,mat=TRUE)
 write.table(Otu_pups_stat_treatment,"Otu_pups_stat.txt",sep="\t")
 ```
+Here is the final [table](Otu_pups_stat.txt) that you would create.
 
 ## Krukal-Wallis test
 
@@ -59,4 +60,4 @@ KW_result$pvalueSignificance <-ifelse(KW_result$KW_Test_results>0.05, "ns",(ifel
 write.table(KW_result,"KW_result.txt",sep="\t")
 
 ```
-
+Here is the final [table](KW_result.txt) that you would create.
