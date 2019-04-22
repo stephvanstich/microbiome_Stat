@@ -1,6 +1,20 @@
 
 # Welcome to General Stat for microbiome data
 
+## installing and opening required packages
+
+```
+install.packages(“psych”,dependencies=TRUE)
+install.packages(“ctv”)
+install.views(“Psychometrics”)
+```
+
+```
+library(psych)
+library(ctv)
+
+```
+
 ## Importing otu [table](otu_pups.txt) in R studio
 
 ```
