@@ -80,13 +80,48 @@ Here is the final [table](KW_result.txt) with your test results!
 
 ## Correlation
 
-we want to correlate the mother and the pups microbiome:
+Here, we want to correlate teh entire microbiome of two different groups of samples (mothers and  pups)
 
-do the stat for the mother:
+We will reuse the data frame created before for the pups named - Otu_pups_stat_treatment- .
+We will import and repeat the stat for the second group to correlate (here is the [mothers](otu_mothers.txt))
 ```
-Otu_mothers_stat_treatment<-describeBy(otu_mothers,otu_mothers$AS,mat=TRUE)
-Final_Otu_mothers_stat_treatment <-Otu_mothers_stat_treatment[-c(1, 2, 3), c(2,5,7)] 
-Final_Otu_mothers_stat_treatment<-Final_Otu_mothers_stat_treatment[order(Final_Otu_mothers_stat_treatment[which(colnames(Final_Otu_mothers_stat_treatment)=="group1")]),]
+otu_mothers<- read.delim("otu_mothers.txt", header=TRUE, row.names = 1)
+Otu_mothers_stat_treatment<-describeBy(otu_mothers,otu_mothers$Treatment,mat=TRUE)
 
-write.table(Final_Otu_mothers_stat_treatment,"Otu_mothers_stat.txt",sep="\t")
 ```
+
+Then, we will extract the mean of each species across samples
+
+```
+Otu_pups_mean<- Otu_pups_stat_treatment[,c(2,5)]
+Otu_mothers_mean<- Otu_mothers_stat_treatment[,c(2,5)]
+```
+We will then separate the file per treatment
+```
+Otu_pups_Ctrl<- subset(Otu_pups_mean, Otu_pups_mean $group1 == "Ctrl")
+Otu_pups_ADI1x<- subset(Otu_pups_mean, Otu_pups_mean $group1 == "ADI1x")
+Otu_pups_ADI2x<- subset(Otu_pups_mean, Otu_pups_mean $group1 == "ADI2x")
+
+Otu_mothers_Ctrl<- subset(Otu_mothers_mean, Otu_mothers_mean $group1 == "Ctrl")
+Otu_mothers_ADI1x<- subset(Otu_mothers_mean, Otu_mothers_mean $group1 == "ADI1x")
+Otu_mothers_ADI2x<- subset(Otu_mothers_mean, Otu_mothers_mean $group1 == "ADI2x")
+```
+Finally, we can make the correlation(spearman) and significance test(WW)
+```
+Ctrl.corr.microbiome.mean <- cor(Otu_mothers_Ctrl$mean, Otu_pups_Ctrl$mean, method= "spearman")
+ADI1x.corr.microbiome.mean <- cor(Otu_mothers_ADI1x$mean, Otu_pups_ADI1x$mean, method= "spearman")
+ADI2x.corr.microbiome.mean <- cor(Otu_mothers_ADI2x$mean, Otu_pups_ADI2x$mean, method= "spearman")
+
+
+pvalue.Ctrl<-cor.test(Otu_mothers_Ctrl$mean,Otu_pups_Ctrl$mean, method= "spearman")$p.value
+pvalue.ADI1x<-cor.test(Otu_mothers_ADI1x$mean,Otu_pups_ADI1x$mean, method= "spearman")$p.value
+pvalue.ADI2x<-cor.test(Otu_mothers_ADI2x$mean,Otu_pups_ADI2x$mean, method= "spearman")$p.value
+```
+This is the scripot to create a [table](Spearman.correlation.txt)with those value
+```
+Spearman.correlation<- data.frame(c(Ctrl.corr.microbiome.mean, ADI1x.corr.microbiome.mean, ADI2x.corr.microbiome.mean), c(pvalue.Ctrl,pvalue.ADI1x,pvalue.ADI2x))
+row.names(Spearman.correlation)<-c("Ctrl", "ADI1x", "ADI2x")
+colnames(Spearman.correlation)<-c("Spearman", "pvalue")
+
+write.table(Spearman.correlation, "Spearman.correlation.txt" ,sep="\t")
+
