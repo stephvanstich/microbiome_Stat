@@ -19,6 +19,7 @@ library(ctv)
 
 ```
 otu_pups <- read.delim("otu_pups.txt", header=TRUE)
+otu_mothers<- read.delim(Otu_mothers.txt, header=TRUE)
 ```
 
 ## General stats (mean, median, std...)
@@ -76,3 +77,16 @@ write.table(KW_result,"KW_result.txt",sep="\t")
 
 ```
 Here is the final [table](KW_result.txt) with your test results!
+
+## Correlation
+
+we want to correlate the mother and the pups microbiome:
+
+do the stat for the mother:
+```
+Otu_mothers_stat_treatment<-describeBy(otu_mothers,otu_mothers$AS,mat=TRUE)
+Final_Otu_mothers_stat_treatment <-Otu_mothers_stat_treatment[-c(1, 2, 3), c(2,5,7)] 
+Final_Otu_mothers_stat_treatment<-Final_Otu_mothers_stat_treatment[order(Final_Otu_mothers_stat_treatment[which(colnames(Final_Otu_mothers_stat_treatment)=="group1")]),]
+
+write.table(Final_Otu_mothers_stat_treatment,"Otu_mothers_stat.txt",sep="\t")
+```
