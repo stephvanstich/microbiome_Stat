@@ -66,22 +66,25 @@ KW_Firmicutes_test_pups_ADI2x_Ctrl<- kruskal.test(Firmicutes ~ Treatment, data =
 KW_Proteobacteria_test_pups_ADI1x_Ctrl<- kruskal.test(Proteobacteria ~ Treatment, data = otu_pups_Ctrl_ADI1x)
 KW_Proteobacteria_test_pups_ADI2x_Ctrl<- kruskal.test(Proteobacteria ~ Treatment, data = otu_pups_Ctrl_ADI2x)
 
+KW_FirmicutesonBacteroidetesratio_test_pups_ADI1x_Ctrl<- kruskal.test(FirmicutesonBacteroidetesratio ~ Treatment, data = otu_pups_Ctrl_ADI1x)
+KW_FirmicutesonBacteroidetesratio_test_mothers_ADI2x_Ctrl<- kruskal.test(FirmicutesonBacteroidetesratio ~ Treatment, data = otu_pups_Ctrl_ADI2x)
+
 ```
 Creating a table with the Kruskal-Wallis test result
 
 ```
-KW_Test_results<- c(KW_Verruco_test_pups_ADI1x_Ctrl$p.value,KW_Verruco_test_pups_ADI2x_Ctrl$p.value,KW_Tenericut_test_pups_ADI1x_Ctrl$p.value,KW_Tenericut_test_pups_ADI2x_Ctrl$p.value,KW_Unassigned_test_pups_ADI1x_Ctrl$p.value,KW_Unassigned_test_pups_ADI2x_Ctrl$p.value,KW_Bacteroidetes_test_pups_ADI1x_Ctrl$p.value,KW_Bacteroidetes_test_pups_ADI2x_Ctrl$p.value,KW_Firmicutes_test_pups_ADI1x_Ctrl$p.value,KW_Firmicutes_test_pups_ADI2x_Ctrl$p.value,KW_Proteobacteria_test_pups_ADI1x_Ctrl$p.value,KW_Proteobacteria_test_pups_ADI2x_Ctrl$p.value)
+KW_Test_results_pups<- c(KW_Verruco_test_pups_ADI1x_Ctrl$p.value,KW_Verruco_test_pups_ADI2x_Ctrl$p.value,KW_Tenericut_test_pups_ADI1x_Ctrl$p.value,KW_Tenericut_test_pups_ADI2x_Ctrl$p.value,KW_Unassigned_test_pups_ADI1x_Ctrl$p.value,KW_Unassigned_test_pups_ADI2x_Ctrl$p.value,KW_Bacteroidetes_test_pups_ADI1x_Ctrl$p.value,KW_Bacteroidetes_test_pups_ADI2x_Ctrl$p.value,KW_Firmicutes_test_pups_ADI1x_Ctrl$p.value,KW_Firmicutes_test_pups_ADI2x_Ctrl$p.value,KW_Proteobacteria_test_pups_ADI1x_Ctrl$p.value,KW_Proteobacteria_test_pups_ADI2x_Ctrl$p.value, KW_FirmicutesonBacteroidetesratio_test_pups_ADI1x_Ctrl$p.value, KW_FirmicutesonBacteroidetesratio_test_pups_ADI2x_Ctrl$p.value)
 ```
 ```
-KW_Test_sample <- c("KW_Verruco_test_pups_ADI1x_Ctrl","KW_Verruco_test_pups_ADI2x_Ctrl","KW_Tenericut_test_pups_ADI1x_Ctrl","KW_Tenericut_test_pups_ADI2x_Ctrl","KW_Unassigned_test_pups_ADI1x_Ctrl","KW_Unassigned_test_pups_ADI2x_Ctrl","KW_Bacteroidetes_test_pups_ADI1x_Ctrl","KW_Bacteroidetes_test_pups_ADI2x_Ctrl","KW_Firmicutes_test_pups_ADI1x_Ctrl","KW_Firmicutes_test_pups_ADI2x_Ctrl","KW_Proteobacteria_test_pups_ADI1x_Ctrl", "KW_Proteobacteria_test_pups_ADI2x_Ctrl")
+KW_Test_sample <- c("KW_Verruco_test_pups_ADI1x_Ctrl","KW_Verruco_test_pups_ADI2x_Ctrl","KW_Tenericut_test_pups_ADI1x_Ctrl","KW_Tenericut_test_pups_ADI2x_Ctrl","KW_Unassigned_test_pups_ADI1x_Ctrl","KW_Unassigned_test_pups_ADI2x_Ctrl","KW_Bacteroidetes_test_pups_ADI1x_Ctrl","KW_Bacteroidetes_test_pups_ADI2x_Ctrl","KW_Firmicutes_test_pups_ADI1x_Ctrl","KW_Firmicutes_test_pups_ADI2x_Ctrl","KW_Proteobacteria_test_pups_ADI1x_Ctrl", "KW_Proteobacteria_test_pups_ADI2x_Ctrl", "KW_FirmicutesonBacteroidetesratio_test_pups_ADI1x_Ctrl", "KW_FirmicutesonBacteroidetesratio_test_pups_ADI2x_Ctrl")
 ```
 ```
-KW_result<- data.frame(KW_Test_sample, KW_Test_results) 
-KW_result$pvalueSignificance <-ifelse(KW_result$KW_Test_results>0.05, "ns",(ifelse(KW_result$KW_Test_results<0.001, "****",(ifelse(KW_result$KW_Test_results<0.005, "***", (ifelse(KW_result$KW_Test_results<0.01, "**", (ifelse(KW_result$KW_Test_results<0.05, "*", "-")))))))))
-write.table(KW_result,"KW_result.txt",sep="\t")
+KW_result_pups<- data.frame(KW_Test_sample, KW_Test_results_pups) 
+KW_result_pups$pvalueSignificance <-ifelse(KW_result_pups$KW_Test_results>0.05, "ns",(ifelse(KW_result_pups$KW_Test_results<0.001, "****",(ifelse(KW_result_pups$KW_Test_results<0.005, "***", (ifelse(KW_result_pups$KW_Test_results<0.01, "**", (ifelse(KW_result_pups$KW_Test_results<0.05, "*", "-")))))))))
+write.table(KW_result_pups,"KW_result_pups.txt",sep="\t")
+```
 
-```
-Here is the final [table](KW_result.txt) with your test results!
+Here is the final [table](KW_result_pups.txt) with your test results!
 
 ## Correlation
 
