@@ -1,0 +1,15 @@
+"KW_Test_sample"	"KW_Test_results_pups"	"pvalueSignificance"
+"1"	"KW_Verruco_test_pups_ADI1x_Ctrl"	0.0495346134356268	"*"
+"2"	"KW_Verruco_test_pups_ADI2x_Ctrl"	0.04630159491511	"*"
+"3"	"KW_Tenericut_test_pups_ADI1x_Ctrl"	0.0495346134356268	"*"
+"4"	"KW_Tenericut_test_pups_ADI2x_Ctrl"	0.04630159491511	"*"
+"5"	"KW_Unassigned_test_pups_ADI1x_Ctrl"	0.0495346134356268	"*"
+"6"	"KW_Unassigned_test_pups_ADI2x_Ctrl"	0.0495346134356268	"*"
+"7"	"KW_Bacteroidetes_test_pups_ADI1x_Ctrl"	0.0495346134356268	"*"
+"8"	"KW_Bacteroidetes_test_pups_ADI2x_Ctrl"	0.0495346134356268	"*"
+"9"	"KW_Firmicutes_test_pups_ADI1x_Ctrl"	0.0495346134356268	"*"
+"10"	"KW_Firmicutes_test_pups_ADI2x_Ctrl"	0.0495346134356268	"*"
+"11"	"KW_Proteobacteria_test_pups_ADI1x_Ctrl"	NA	NA
+"12"	"KW_Proteobacteria_test_pups_ADI2x_Ctrl"	NA	NA
+"13"	"KW_FirmicutesonBacteroidetesratio_test_pups_ADI1x_Ctrl"	0.126630457947616	"ns"
+"14"	"KW_FirmicutesonBacteroidetesratio_test_pups_ADI2x_Ctrl"	0.512690760261924	"ns"
