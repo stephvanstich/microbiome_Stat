@@ -18,7 +18,7 @@ library(ctv)
 ## Importing otu table ([pups](otu_pups.txt) and [mothers](otu_mothers.txt)) in R studio
 
 ```
-otu_pups <- read.delim("otu_pups.txt", header=TRUE)
+otu_pups <- read.delim("otu_pups.txt", header=TRUE, row.name = 1)
 ```
 ## Firmicutes/Bacteroidetes ratio colum
 
@@ -30,8 +30,8 @@ otu_pups$FirmicutesonBacteroidetesratio <- otu_pups$Firmicutes / otu_pups$Bacter
 
 ```
 Otu_pups_stat_treatment<-describeBy(otu_pups,otu_pups$Treatment,mat=TRUE)
-Final_Otu_pups_stat_treatment <- Otu_pups_stat_treatment[-c(1, 2, 3,4,5,6), ] 
-write.table(Final_Otu_pups_stat_treatment,"Otu_pups_stat.txt",sep="\t")
+Otu_pups_stat_treatment <- Otu_pups_stat_treatment[-c(1,2,3), ] 
+write.table(Otu_pups_stat_treatment,"Otu_pups_stat.txt",sep="\t")
 ```
 Here is the final [table](Otu_pups_stat.txt) with your stats!
 
@@ -96,14 +96,21 @@ We will import and repeat the stat for the second group to correlate (here is th
 ```
 otu_mothers<- read.delim("otu_mothers.txt", header=TRUE, row.names = 1)
 Otu_mothers_stat_treatment<-describeBy(otu_mothers,otu_mothers$Treatment,mat=TRUE)
+Otu_mothers_stat_treatment<-Otu_mothers_stat_treatment[ -c(1,2,3), ]
 
+```
+
+We will also get read of the Firmicutes/Bacteroidetes ratio  lines that we do not wnat to add in the correlation
+
+```
+Otu_pups_stat_treatment<-Otu_pups_stat_treatment[-c(19,20,21), ]
 ```
 
 Then, we will extract the mean of each species across samples.
 
 ```
-Otu_pups_mean<- Otu_pups_stat_treatment[-c(1,2,3),c(2,5)]
-Otu_mothers_mean<- Otu_mothers_stat_treatment[-c(1,2,3),c(2,5)]
+Otu_pups_mean<- Otu_pups_stat_treatment[ ,c(2,5)]
+Otu_mothers_mean<- Otu_mothers_stat_treatment[ ,c(2,5)]
 ```
 We will then separate the file per treatment.
 ```
