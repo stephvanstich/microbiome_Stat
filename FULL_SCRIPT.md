@@ -66,7 +66,7 @@ KW_Proteobacteria_test_pups_ADI1x_Ctrl<- kruskal.test(Proteobacteria ~ Treatment
 KW_Proteobacteria_test_pups_ADI2x_Ctrl<- kruskal.test(Proteobacteria ~ Treatment, data = otu_pups_Ctrl_ADI2x)
 
 KW_FirmicutesonBacteroidetesratio_test_pups_ADI1x_Ctrl<- kruskal.test(FirmicutesonBacteroidetesratio ~ Treatment, data = otu_pups_Ctrl_ADI1x)
-KW_FirmicutesonBacteroidetesratio_test_mothers_ADI2x_Ctrl<- kruskal.test(FirmicutesonBacteroidetesratio ~ Treatment, data = otu_pups_Ctrl_ADI2x)
+KW_FirmicutesonBacteroidetesratio_test_pups_ADI2x_Ctrl<- kruskal.test(FirmicutesonBacteroidetesratio ~ Treatment, data = otu_pups_Ctrl_ADI2x)
 
 ```
 Creating a table with the Kruskal-Wallis test result
