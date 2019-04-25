@@ -21,6 +21,11 @@ library(ctv)
 otu_pups <- read.delim("otu_pups.txt", header=TRUE)
 otu_mothers<- read.delim(Otu_mothers.txt, header=TRUE)
 ```
+## Firmicutes/Bacteroidetes ratio colum
+
+```
+otu_pups$FirmicutesonBacteroidetesratio <- otu_pups$Firmicutes / otu_pups$Bacteroidetes
+```
 
 ## General stats (mean, median, std...)
 
