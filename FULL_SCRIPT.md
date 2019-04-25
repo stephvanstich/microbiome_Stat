@@ -19,7 +19,6 @@ library(ctv)
 
 ```
 otu_pups <- read.delim("otu_pups.txt", header=TRUE)
-otu_mothers<- read.delim("otu_mothers.txt", header=TRUE)
 ```
 ## Firmicutes/Bacteroidetes ratio colum
 
