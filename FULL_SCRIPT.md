@@ -15,11 +15,11 @@ library(ctv)
 
 ```
 
-## Importing otu [table](otu_pups.txt) in R studio
+## Importing otu table ([pups](otu_pups.txt) and [mothers](otu_mothers.txt)) in R studio
 
 ```
 otu_pups <- read.delim("otu_pups.txt", header=TRUE)
-otu_mothers<- read.delim(Otu_mothers.txt, header=TRUE)
+otu_mothers<- read.delim("otu_mothers.txt", header=TRUE)
 ```
 ## Firmicutes/Bacteroidetes ratio colum
 
